@@ -14,12 +14,27 @@ POST /hoteis: Cria um novo cadastro de hotel.
 PUT /hoteis/{hotel_id}: Atualiza os dados de um hotel existente.
 DELETE /hoteis/{hotel_id}: Remove um hotel do cadastro.
 
-## 🛠️ Tecnologias Utilizadas
+## ⚙️ Como Rodar o Projeto (Configuração Local)
 
+Siga os passos abaixo para configurar e executar a API em seu ambiente local:
+
+### Pré-requisitos
+* **Python 3.x**
+* **Pip** (gerenciador de pacotes do Python)
+
+### 1. Clonar o Repositório
+git clone (https://github.com/Djeferson-Almeida/Python-Rest-Api)
+
+### 2. Instalar as dependências
+pip install Flask
+pip install flask_restful
+
+## 🛠️ Tecnologias Utilizadas
 Este projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
 
-* **Python:** A linguagem de programação principal para o desenvolvimento da API.
-* **Flask:** Micro-framework web para construir a estrutura da API.
-* **Flask-RESTful:** Extensão para Flask que simplifica a criação de APIs RESTful.
-* **VS Code:** O editor de código utilizado para o desenvolvimento, com excelente suporte a Python.
-* **Git / GitHub:** Para controle de versão e hospedagem do código-fonte.
+* **Python:** 
+* **Flask:** 
+* **Flask-RESTful:**
+* **VS Code:** 
+* **Git / GitHub:**
+* **Postman**
