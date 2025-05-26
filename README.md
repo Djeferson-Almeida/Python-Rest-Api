@@ -29,15 +29,15 @@ Siga os passos abaixo para configurar e executar a API em seu ambiente local:
 git clone (https://github.com/Djeferson-Almeida/Python-Rest-Api)
 
 ### 2. Instalar as dependências
-* pip install Flask
-* pip install flask_restful
+* `pip install Flask`
+* `pip install flask_restful`
 
 ## 🛠️ Tecnologias Utilizadas
 Este projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
 
-* **Python:** 
-* **Flask:** 
-* **Flask-RESTful:**
-* **VS Code:** 
-* **Git / GitHub:**
+* **Python** 
+* **Flask** 
+* **Flask-RESTful**
+* **VS Code** 
+* **Git / GitHub**
 * **Postman**
