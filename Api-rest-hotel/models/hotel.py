@@ -1,4 +1,16 @@
-class HotelModel:
+from sql_alchemy import banco
+
+class HotelModel(banco.Model):
+    __tablename__ = 'hoteis'
+
+
+    hotel_id = banco.Column(banco.String, primary_key = True)
+    nome = banco.Column(banco.String(80))
+    estrelas = banco.Column(banco.Float(precision=1))
+    diaria = banco.Column(banco.Float(precision=2))
+    estado = banco.Column(banco.String(40))
+    cidade =banco.Column(banco.String(40))
+
     def __init__(self, hotel_id, nome, estrelas, diaria, estado, cidade):
         self.hotel_id = hotel_id
         self.nome = nome
@@ -16,3 +28,21 @@ class HotelModel:
             'estado': self.estado,
             'cidade': self.cidade
         } 
+    
+    @classmethod
+    def find_hotel(cls, hotel_id):
+        return cls.query.filter_by(hotel_id=hotel_id).first()
+
+    def save_hotel(self):
+        banco.session.merge(self)
+        banco.session.commit()
+
+    def update_hotel(self, **dados):
+        self.nome = dados.get('nome', self.nome)
+        self.estrelas = dados.get('estrelas', self.estrelas)
+        self.diaria = dados.get('diaria', self.diaria)
+        self.estado = dados.get('estado', self.estado)
+        self.cidade = dados.get('cidade', self.cidade)       
+    def delete_hotel(self):
+        banco.session.delete(self)      
+        banco.session.commit() 
