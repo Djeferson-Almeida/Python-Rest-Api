@@ -31,7 +31,8 @@ git clone (https://github.com/Djeferson-Almeida/Python-Rest-Api)
 ### 2. Instalar as dependências
 * `pip install Flask`
 * `pip install flask_restful`
-
+* `pip install SQLAlchemy`
+*
 ## 🛠️ Tecnologias Utilizadas
 Este projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
 
