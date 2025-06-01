@@ -21,6 +21,7 @@ Este projeto demonstra a criação de uma API em Python, cobrindo desde a config
 
 * 🔍 `GET /users/{user_id}` - Retorna o ID do usuário e o login.
 * 📝 `POST /register` - Cria um novo cadastro de usuário.
+* 🔐 `POST /login` - Login que cria um token de acesso utilizando Flask-JWT
 * ❌ `DELETE /users/{hotel_id}` - Remove um usuário.
 
 ## ⚙️ Como Rodar o Projeto (Configuração Local)
@@ -38,13 +39,12 @@ git clone (https://github.com/Djeferson-Almeida/Python-Rest-Api)
 * `pip install Flask`
 * `pip install flask_restful`
 * `pip install SQLAlchemy`
-*
+* `pip install Flask-JWT-Extended`
 ## 🛠️ Tecnologias Utilizadas
 Este projeto foi desenvolvido utilizando as seguintes tecnologias e ferramentas:
 
 * **Python** 
 * **Flask** 
-* **Flask-RESTful**
 * **VS Code** 
 * **Git / GitHub**
 * **Postman**
