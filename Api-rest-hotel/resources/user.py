@@ -1,5 +1,12 @@
+import hmac
 from flask_restful import Resource, reqparse
 from models.user import UserModel
+from flask_jwt_extended import create_access_token
+
+argumentos = reqparse.RequestParser()
+argumentos.add_argument('login',type=str,required = True, help = "The field 'login' cannot be blank")
+argumentos.add_argument('password',type=str,required = True, help = "The field 'password' cannot be blank")
+
 
 class User(Resource):
 
@@ -24,9 +31,7 @@ class User(Resource):
 
 class UserRegister(Resource):
     def post(self):
-        argumentos = reqparse.RequestParser()
-        argumentos.add_argument('login',type=str,required = True, help = "The field 'login' cannot be blank")
-        argumentos.add_argument('password',type=str,required = True, help = "The field 'password' cannot be blank")
+
         dados = argumentos.parse_args()
 
         if UserModel.find_by_login(dados['login']):
@@ -36,6 +41,18 @@ class UserRegister(Resource):
         user.save_user()
         return {'message': 'User created sucessfully!'},201
         
+class UserLogin(Resource):
+    @classmethod
+    def post(cls):
 
+        dados = argumentos.parse_args()
+        user = UserModel.find_by_login(dados['login'])
+        try:
+            if user and hmac.compare_digest(user.password,dados['password']):
+                access_token = create_access_token(identity = user.user_id)
+                return {'access_token': access_token},200
+        except:
+            return {'message': 'An internal server error as occurred.'},500
+        return {'message': 'The username or password is incorrect.'},401
 
         
