@@ -17,6 +17,12 @@ Este projeto demonstra a criação de uma API em Python, cobrindo desde a config
 * 🔄 `PUT /hoteis/{hotel_id}` - Atualiza os dados de um hotel existente.
 * ❌ `DELETE /hoteis/{hotel_id}` - Remove um hotel do cadastro.
 
+### Users
+
+* 🔍 `GET /users/{user_id}` - Retorna o ID do usuário e o login.
+* 📝 `POST /register` - Cria um novo cadastro de usuário.
+* ❌ `DELETE /users/{hotel_id}` - Remove um usuário.
+
 ## ⚙️ Como Rodar o Projeto (Configuração Local)
 
 Siga os passos abaixo para configurar e executar a API em seu ambiente local:
