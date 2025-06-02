@@ -2,7 +2,8 @@ import hmac
 from flask_restful import Resource, reqparse
 from models.user import UserModel
 from flask_jwt_extended import create_access_token
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt
+from blacklist import BLACKLIST
 
 argumentos = reqparse.RequestParser()
 argumentos.add_argument('login',type=str,required = True, help = "The field 'login' cannot be blank")
@@ -55,4 +56,10 @@ class UserLogin(Resource):
             return {'message': 'An internal server error as occurred.'},500
         return {'message': 'The username or password is incorrect.'},401
 
-        
+class UserLogout(Resource):
+
+    @jwt_required()
+    def post(self):
+        jwt_id = get_jwt()['jti']
+        BLACKLIST.add(jwt_id)
+        return {'message': 'Logged out successfully!'}, 200
