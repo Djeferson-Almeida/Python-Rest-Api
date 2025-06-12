@@ -25,6 +25,11 @@ Este projeto demonstra a criação de uma API em Python, cobrindo desde a config
 * 🔓 `POST /logout` - Desloga desativando o token de acesso.
 * ❌ `DELETE /users/{hotel_id}` - Remove um usuário.
 
+### Sites
+
+* 🔍 `GET /sites` - Retorna os sites cadastrados.
+* 📝 `POST /sites/{URL}` - Cadastra novos sites à lista.
+
 ## ⚙️ Como Rodar o Projeto (Configuração Local)
 
 Siga os passos abaixo para configurar e executar a API em seu ambiente local:
