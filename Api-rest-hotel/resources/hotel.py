@@ -2,6 +2,7 @@ from sql_alchemy import banco
 from flask_restful import Resource, reqparse
 from models.hotel import HotelModel
 from flask_jwt_extended import jwt_required
+from resources.filtros import normalize_path_params
 
 path_params = reqparse.RequestParser()
 path_params.add_argument('cidade', type=str)
@@ -13,27 +14,7 @@ path_params.add_argument('diaria_max', type=float)
 path_params.add_argument('limit', type=float)
 path_params.add_argument('offset', type=float)
 
-def normalize_path_params(cidade=None, estado=None, estrelas_min=0, estrelas_max=5,
-                          diaria_min=0, diaria_max=1000, limit=50, offset=0, **dados):
-    if cidade:
-        return {
-            'estrelas_min': estrelas_min,
-            'estrelas_max': estrelas_max,
-            'diaria_min': diaria_min,
-            'diaria_max': diaria_max,
-            'cidade': cidade,
-            'estado': estado,
-            'limit': limit,
-            'offset': offset
-        }
-    return {
-        'estrelas_min': estrelas_min,
-        'estrelas_max': estrelas_max,
-        'diaria_min': diaria_min,
-        'diaria_max': diaria_max,
-        'limit': limit,
-        'offset': offset
-    }
+
 
 class Hoteis(Resource):
     def get(self):
@@ -63,7 +44,7 @@ class Hotel(Resource):
     argumentos.add_argument('diaria', type=float, required=True, help="The field 'diaria' cannot be left blank")
     argumentos.add_argument('estado', type=str, required=True, help="The field 'estado' cannot be left blank")
     argumentos.add_argument('cidade', type=str, required=True, help="The field 'cidade' cannot be left blank")
-
+    argumentos.add_argument('site_id',type=int,required=True, help = 'Every hotel needs to be linked with a site.')
     def get(self, hotel_id):
         hotel = HotelModel.find_hotel(hotel_id)
         if hotel:
