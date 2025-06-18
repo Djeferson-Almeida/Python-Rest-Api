@@ -4,17 +4,20 @@ class UserModel(banco.Model):
     __tablename__ = 'users'
 
     user_id = banco.Column(banco.Integer, primary_key=True)
-    login = banco.Column(banco.String(40))
+    login = banco.Column(banco.String(40), nullable = False, unique = True)
     password = banco.Column(banco.String(40))
+    ativado = banco.Column(banco.Boolean, default = False)
 
-    def __init__(self, login, password):
+    def __init__(self, login, password,ativado):
         self.login = login
         self.password = password
+        self.ativado = ativado
 
     def json(self):
         return{
             'user_id': self.user_id,
-            'login': self.login
+            'login': self.login,
+            'ativado': self.ativado
         }
 
     @classmethod

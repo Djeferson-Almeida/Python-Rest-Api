@@ -1,5 +1,6 @@
 from flask_restful import Resource
 from models.site import SiteModel
+from flask_jwt_extended import jwt_required
 
 
 class Sites(Resource):
@@ -14,7 +15,7 @@ class Site(Resource):
         if site: 
             return site.json()
         return {'message': 'Site not found'},404
-    
+
     def post(self,url):
         if SiteModel.find_site(url):
             return {'message': "The site '{url}'already exists.".format(url)}, 400
@@ -23,7 +24,7 @@ class Site(Resource):
             site.save_site()
         except: 
             return {'message': 'An internal error ocurred trying to create a new site.'},500
-        
+  
     def delete(self,url):
         site = SiteModel.find_site(url)
         if site:
