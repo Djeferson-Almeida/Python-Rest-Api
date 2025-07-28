@@ -74,4 +74,3 @@ class UserConfirm(Resource):
         user.ativado = True
         user.save_user()
         return {"message":"User id '{}' confirmed successfully.".format(user_id)},200
-
