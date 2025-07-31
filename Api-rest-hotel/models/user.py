@@ -8,6 +8,7 @@ class UserModel(banco.Model):
     user_id = banco.Column(banco.Integer, primary_key=True)
     login = banco.Column(banco.String(40), nullable = False, unique = True)
     password = banco.Column(banco.String(40))
+    email = banco.Column(banco.String(40))
     ativado = banco.Column(banco.Boolean, default = False)
 
     def __init__(self, login, password, email, ativado):
